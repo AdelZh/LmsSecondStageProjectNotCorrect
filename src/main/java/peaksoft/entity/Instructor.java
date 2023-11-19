@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "instructors")
 @Getter
@@ -23,7 +26,9 @@ public class Instructor {
     private String phoneNumber;
     private String email;
     private String specialization;
-    @OneToOne
+    @ManyToOne
+    private Company company;
+    @ManyToOne
     private Course course;
 
 }

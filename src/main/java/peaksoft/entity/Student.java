@@ -2,17 +2,14 @@ package peaksoft.entity;
 
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Entity
 @Table(name = "students")
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
+@NoArgsConstructor
 public class Student {
 
     @Id
@@ -22,8 +19,9 @@ public class Student {
     private String lastName;
     private String phoneNumber;
     private String email;
+    @Enumerated(EnumType.STRING)
     private StudyFormat studyFormat;
-    @OneToOne(mappedBy = "students")
+    @ManyToOne
     private Group group;
 
 }

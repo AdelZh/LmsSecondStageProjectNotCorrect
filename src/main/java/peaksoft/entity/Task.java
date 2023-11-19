@@ -1,10 +1,7 @@
 package peaksoft.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -14,7 +11,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
+@NoArgsConstructor
 public class Task {
 
     @Id
@@ -23,8 +20,9 @@ public class Task {
     private String taskName;
     private String taskText;
     private LocalDate deadline;
-    @OneToOne(mappedBy = "tasks")
+    @ManyToOne
     private Lesson lesson;
+
 }
 
 

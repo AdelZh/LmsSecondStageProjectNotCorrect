@@ -1,10 +1,8 @@
 package peaksoft.entity;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 
@@ -13,7 +11,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
+@NoArgsConstructor
 public class Company {
 
     @Id
@@ -21,8 +19,15 @@ public class Company {
     private Long id;
     private String companyName;
     private String  locatedCountry;
-    @OneToMany
+    private String image;
+    @OneToMany(mappedBy = "company")
     private List<Course> course;
+    @OneToMany
+    private List<Instructor> instructors;
+    @OneToMany
+    private List<Student> students;
+    @OneToMany
+    private List<Group> groups;
 
 
 }

@@ -23,8 +23,13 @@ public class Group {
     private String groupName;
     private LocalDate dateOfStart;
     private String image;
-    @OneToMany
-    private List<Course> course;
-    @OneToMany
+    @ManyToOne
+    private Course course;
+    @OneToMany(mappedBy = "group", cascade = CascadeType.ALL)
     private List<Student> student;
+    @ManyToOne
+    private Company company;
+
+
+
 }

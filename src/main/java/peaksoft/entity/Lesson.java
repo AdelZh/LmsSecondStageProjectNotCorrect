@@ -2,10 +2,7 @@ package peaksoft.entity;
 
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.List;
 
@@ -14,16 +11,17 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
+@NoArgsConstructor
 public class Lesson {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String lessonName;
-    @OneToOne
+    @ManyToOne
     private Course course;
-    @OneToMany
+    @OneToMany(mappedBy = "lesson", cascade = CascadeType.ALL)
     private List<Task> task;
+
 
 }

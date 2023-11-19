@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Main page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous">
+</head>
+<style>
+    .container{
+        display: flex;
+        flex-wrap: wrap;
+    }
+</style>
+<body>
+
+
+<div class="container" style="width : 80%; margin: 0 auto">
+    <div class="card" style="width: 18rem;"
+         th:each="company:${getAllCompany}">
+
+        <img th:src="${company.getImage()}" class="card-img-top" alt="photo of usa">
+        <div class="card-body">
+            <h5 th:text="${company.getCompanyName()}" class="card-title">Lesson Name</h5>
+            <p th:text="${company.getLocatedCountry()}" class="card-text"></p>
+
+
+            <form th:method="DELETE" th:action="@{/company/{companyid}/delete (companyid=${company.getId()})}">
+                <input type="submit" th:value="Delete">
+            </form>
+
+            <a th:href="@{/company/{getById}/get (getById=${company.getId()})}">Get</a>
+
+            <a th:href="@{/company/{myId}/update (myId=${company.getId()})}">Update</a>
+
+
+        </div>
+    </div>
+</div>
+
+<a class="btn btn-primary" href="/company/create" role="button">Add Company</a>
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</html>

@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -23,10 +25,15 @@ public class Course {
     private String courseName;
     private int duration;
     private String description;
-    @OneToMany(mappedBy = "courses")
+
+    @OneToMany(mappedBy = "course")
     private List<Group> group;
-    @OneToMany(mappedBy = "courses")
+    @OneToMany(mappedBy = "course", cascade = CascadeType.REMOVE)
+    private List<Lesson> lesson;
+    @ManyToOne
+    private Company company;
+    @OneToMany(mappedBy = "course")
     private List<Instructor> instructors;
-    @OneToMany(mappedBy = "courses")
-    private List<Lesson> lessons;
+
+
 }

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New group</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/group/save/{companyId}(companyId=${companyId})}" th:object="${newGroup}">
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="dateOfStart" th:field="*{dateOfStart}">
+        <label for="dateOfStart">Date of Start</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="groupName" th:field="*{groupName}">
+        <label for="groupName">Group Name</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="image" th:field="*{image}">
+        <label for="image">Image</label>
+    </div>
+
+
+
+    <p th:text="${companyId}">Company ID</p>
+
+    <button type="submit" class="btn btn-outline-success">Save</button>
+</form>
+</body>
+</html>
+
